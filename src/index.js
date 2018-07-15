@@ -1,6 +1,6 @@
 const DEFAULT_PREFIX = 'vuex-persisted-shared-state';
 
-export default (mutation, options = {}) => store => {
+export default (mutations, options = {}) => store => {
 
     //Check for localStarage exists
     if (typeof window === 'undefined' || !window.localStorage) return;
