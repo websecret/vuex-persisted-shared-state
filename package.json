@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xanf/vuex-persisted-shared-state.git"
+    "url": "git+https://github.com/websecret/vuex-persisted-shared-state.git"
   },
   "bugs": {
     "url": "https://github.com/websecret/vuex-persisted-shared-state/issues"
