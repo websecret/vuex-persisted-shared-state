@@ -1,7 +1,7 @@
 {
   "name": "vuex-persisted-shared-state",
   "description": "Persist Vuex state with localStorage and share between tabs.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Websecret <robin@websecret.by> (websecret.by)",
   "license": "MIT",
   "keywords": [
