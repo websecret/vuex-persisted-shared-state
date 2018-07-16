@@ -78,8 +78,8 @@ export default (mutations, options = {}) => store => {
     //Watch localStorage and commit changes
     window.addEventListener('storage', event => {
         if (!options.share) return;
-        let key = event.key;
 
+        let key = event.key;
         let newValue = JSON.parse(event.newValue);
 
         for(let mutation in mutations) {
