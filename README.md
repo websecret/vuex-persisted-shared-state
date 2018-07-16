@@ -26,7 +26,7 @@ const store = new Vuex.Store({
     // ...
     plugins: [
         persistedSharedState({
-            'SET_CART': 'cart',
+            'cart': 'SET_CART',
         }),
     ]
 });
@@ -42,7 +42,7 @@ Mutations can be provided like strings
 
 ```js
 {
-    'SET_CART': 'cart',
+    'cart': 'SET_CART',
 }
 ```
 
@@ -50,8 +50,8 @@ or like an objects
 
 ```js
 {
-    'SET_CART': {
-        name: 'cart',
+    'cart': {
+        mutation: 'SET_CART',
         share: false,
         defaultValue: null,
     },
