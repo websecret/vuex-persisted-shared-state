@@ -20,10 +20,13 @@ export default (mutations, options = {}) => store => {
         };
     }
 
+    //Concat name with prefix
+    let getStateName = name => `${options.prefix}__${name}`;
+
     //localStorage helpers
-    let setStateItem = (name, value) => window.localStorage.setItem(`${options.prefix}__${name}`, JSON.stringify(value));
-    let getStateItem = (name) => JSON.parse(window.localStorage.getItem(`${options.prefix}__${name}`));
-    let removeStateItem = (name) => window.localStorage.removeItem(`${options.prefix}__${name}`);
+    let setStateItem = (name, value) => window.localStorage.setItem(getStateName(name), JSON.stringify(value));
+    let getStateItem = name => JSON.parse(window.localStorage.getItem(getStateName(name)));
+    let removeStateItem = name => window.localStorage.removeItem(getStateName(name));
 
 
     //Check for localStorage has actions
@@ -59,6 +62,11 @@ export default (mutations, options = {}) => store => {
 
     //Check for mutation should persist
     let shouldPersist = (mutation) => mutations.hasOwnProperty(mutation.type);
+    let shouldShare = (mutation, key = null) => {
+        if(key == null) return true;
+        if(mutations[mutation].share == false) return false;
+        return getStateName(mutations[mutation].name) == key;
+    };
 
     //Set localStoarage on store change
     store.subscribe(mutation => {
@@ -75,7 +83,7 @@ export default (mutations, options = {}) => store => {
         let newValue = JSON.parse(event.newValue);
 
         for(let mutation in mutations) {
-            if(mutations[mutation].share) {
+            if(shouldShare(mutation, key)) {
                 commit(mutation, key == null ? null : newValue);
             }
         }
