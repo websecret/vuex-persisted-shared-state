@@ -15,9 +15,9 @@ export default (keys, options = {}) => store => {
     let _keys = {};
     for(let key in keys) {
         _keys[key] = {
-            mutation: typeof _keys[key] == 'object' ? (_keys[key].mutation || null) : _keys[key],
-            share: typeof _keys[key] == 'object' ? (_keys[key].share || true) : true,
-            defaultValue: typeof _keys[key] == 'object' ? (_keys[key].defaultValue || null) : null,
+            mutation: typeof keys[key] == 'object' ? (keys[key].mutation || null) : keys[key],
+            share: typeof keys[key] == 'object' ? (keys[key].share || true) : true,
+            defaultValue: typeof keys[key] == 'object' ? (keys[key].defaultValue || null) : null,
         };
     }
 
